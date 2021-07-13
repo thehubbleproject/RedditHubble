@@ -1,7 +1,7 @@
 import { BigNumber, Wallet } from "ethers";
 import { BlsSigner } from "./blsSigner";
-import { PubkeyDatabaseEngine } from "./client/database";
-import { StateMemoryEngine, StorageManager } from "./client/storageEngine";
+import { PubkeyDatabaseEngine, StateDatabaseEngine } from "./client/database";
+import { StorageManager } from "./client/storageEngine";
 import { BatchMemoryStorage } from "./client/storageEngine/batches/memory";
 import { TransactionMemoryStorage } from "./client/storageEngine/transactions/memory";
 import { DEFAULT_MNEMONIC } from "./constants";
@@ -312,7 +312,7 @@ export async function storageManagerFactory(
     const pubkeyTreeDepth = options?.pubkeyTreeDepth ?? 32;
     return {
         pubkey: new PubkeyDatabaseEngine(pubkeyTreeDepth),
-        state: new StateMemoryEngine(stateTreeDepth),
+        state: new StateDatabaseEngine(stateTreeDepth),
         batches: new BatchMemoryStorage(),
         transactions: new TransactionMemoryStorage()
     };

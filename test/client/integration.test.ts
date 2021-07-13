@@ -28,11 +28,11 @@ import { CustomToken__factory } from "../../types/ethers-contracts";
  * and reach a correct end state.
  */
 describe("Client Integration", function() {
-    before(async function() {
+    before(async () => {
         await del("./leveldb/*");
     });
 
-    after(async function() {
+    after(async () => {
         await del("./leveldb/*");
     });
 
@@ -160,5 +160,5 @@ describe("Client Integration", function() {
 
         assert.equal(storageSyncer.transactions.count(), maxTransfers);
         assert.equal(storagePacker.transactions.count(), maxTransfers);
-    }).timeout(300000);
+    }).timeout(360000);
 });
